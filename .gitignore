@@ -10,6 +10,7 @@
 
 # production
 /build
+index.build.css
 
 # misc
 .DS_Store
