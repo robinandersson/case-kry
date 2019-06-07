@@ -17,6 +17,7 @@ module.exports = {
 
       kry: {
         'teal-lightest': '#5edac1',
+        'teal-light': '#78c7b8',
       },
 
       gray: {

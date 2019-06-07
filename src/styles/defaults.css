@@ -3,5 +3,7 @@ body {
 }
 
 #root {
+  /* TODO: use @apply on radial-gradient when Tailwind supports it */
+  background-image: radial-gradient(#5edac1, #78c7b8);
   @apply bg-kry-teal-lightest;
 }
