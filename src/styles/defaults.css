@@ -1,3 +1,7 @@
 body {
   @apply font-kry;
 }
+
+#root {
+  @apply bg-kry-teal-lightest;
+}
