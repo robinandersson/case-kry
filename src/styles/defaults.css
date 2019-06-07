@@ -2,6 +2,12 @@ body {
   @apply font-kry;
 }
 
+html,
+body,
+#root {
+  @apply h-full;
+}
+
 #root {
   /* TODO: use @apply on radial-gradient when Tailwind supports it */
   background-image: radial-gradient(#5edac1, #78c7b8);
