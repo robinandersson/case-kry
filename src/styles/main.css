@@ -2,4 +2,6 @@
 
 @import 'tailwindcss/components';
 
+@import 'defaults.css';
+
 @import 'tailwindcss/utilities';
