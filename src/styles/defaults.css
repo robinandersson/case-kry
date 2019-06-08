@@ -13,3 +13,19 @@ body,
   background-image: radial-gradient(#5edac1, #78c7b8);
   @apply bg-kry-teal-light;
 }
+
+.btn {
+  @apply px-10 py-3 rounded-lg bg-kry-teal-light w-full text-white;
+}
+.btn:hover {
+  @apply bg-kry-teal-lightest;
+}
+.btn:active {
+  @apply bg-kry-teal;
+}
+.btn:focus {
+  @apply outline-none shadow-outline;
+}
+.btn:active:focus {
+  @apply shadow-none;
+}

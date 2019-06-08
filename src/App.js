@@ -1,7 +1,12 @@
 import React from 'react';
+import Form from './components/Form.js';
 
 function App() {
-  return <h1>Hello world</h1>;
+  return (
+    <main role="main" className="h-full flex flex-col justify-center">
+      <Form />
+    </main>
+  );
 }
 
 export default App;
