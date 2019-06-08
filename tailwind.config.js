@@ -16,8 +16,11 @@ module.exports = {
       white: '#fff',
 
       kry: {
-        'teal-lightest': '#5edac1',
-        'teal-light': '#78c7b8',
+        'teal-lightest': '#58ECCE',
+        'teal-light': '#5edac1',
+        teal: '#6FCEBC',
+        'teal-dark': '#78c7b8',
+        'teal-darkest': '#7EB8AD',
       },
 
       gray: {
