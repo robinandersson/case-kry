@@ -77,7 +77,10 @@ function App() {
     : { ...currentQuestion, type: 'question' };
 
   return (
-    <main role="main" className="h-full flex flex-col justify-center">
+    <main
+      role="main"
+      className="h-auto min-h-full overflow-auto flex flex-col justify-center"
+    >
       <CheckerForm
         formTitle="Heartburn Checker"
         formContent={formContent}
