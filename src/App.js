@@ -63,11 +63,15 @@ function App() {
     }
   };
 
+  const formContent = currentOutcome
+    ? { ...currentOutcome, type: 'outcome' }
+    : { ...currentQuestion, type: 'question' };
+
   return (
     <main role="main" className="h-full flex flex-col justify-center">
       <CheckerForm
         formTitle="Heartburn Checker"
-        question={currentQuestion}
+        formContent={formContent}
         onAnswerChange={onAnswerChange}
         onAnswerSubmit={onAnswerSubmit}
       />
