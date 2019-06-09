@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Form from './components/Form.js';
+import MultiPageForm from './components/MultiPageForm';
+import CheckerForm from './components/CheckerForm';
 import questionnaire from './assets/data/heartburn.json';
 
 function App() {
@@ -63,7 +65,7 @@ function App() {
 
   return (
     <main role="main" className="h-full flex flex-col justify-center">
-      <Form
+      <CheckerForm
         formTitle="Heartburn Checker"
         question={currentQuestion}
         onAnswerChange={onAnswerChange}
