@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Form from './Form';
 import MultiPageForm from './MultiPageForm';
 
 const CheckerForm = props => {
@@ -12,7 +11,6 @@ const CheckerForm = props => {
       case 'outcome':
         const { text, showBookingButton } = formContent;
         return <h1>{text}</h1>;
-        break;
 
       case 'question':
         const { question_text, answers } = formContent;
@@ -36,7 +34,8 @@ const CheckerForm = props => {
             </div>
           </fieldset>
         );
-        break;
+      default:
+        return <h1>'Something went wrong :/'</h1>;
     }
   })();
 

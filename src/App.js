@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Form from './components/Form.js';
-import MultiPageForm from './components/MultiPageForm';
 import CheckerForm from './components/CheckerForm';
 import questionnaire from './assets/data/heartburn.json';
 
@@ -29,7 +27,8 @@ function App() {
     const { id, score } = currentAnswer;
     setCurrentScore(currentScore + score);
 
-    // determine the type and id of the next action
+    // determine the appropriate next action ('next_question', or 'outcome')
+    // and set state accordingly
     for (let answer of currentQuestion.next) {
       const { next_question, answered, max_score, outcome } = answer;
 
@@ -59,6 +58,10 @@ function App() {
             );
           }
           break;
+        default:
+          // Should never happen
+          // TODO: some nifty error handling goes here
+          return {};
       }
     }
   };
