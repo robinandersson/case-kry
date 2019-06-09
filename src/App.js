@@ -49,8 +49,6 @@ function App() {
         }
       }
     })();
-
-    console.log(nextAction);
   };
 
   return (
