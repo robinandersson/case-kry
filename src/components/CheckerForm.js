@@ -3,7 +3,13 @@ import React from 'react';
 import MultiPageForm from './MultiPageForm';
 
 const CheckerForm = props => {
-  const { formTitle, formContent, onAnswerChange, onAnswerSubmit } = props;
+  const {
+    formTitle,
+    formContent,
+    onAnswerChange,
+    onAnswerSubmit,
+    onBookingSubmit,
+  } = props;
   const { id } = formContent;
 
   const content = (() => {
@@ -18,7 +24,11 @@ const CheckerForm = props => {
               Thank you for answering the questions!
             </legend>
             <p>{text}</p>
-            {show_booking_button && <button class="btn">Book a meeting</button>}
+            {show_booking_button && (
+              <button class="btn" type="submit">
+                Book a meeting
+              </button>
+            )}
           </fieldset>
         );
 
@@ -49,12 +59,16 @@ const CheckerForm = props => {
     }
   })();
 
+  const actionButton = formContent.type === 'question' && {
+    text: 'Next',
+    onClick: onAnswerSubmit,
+  };
+
   return (
     <MultiPageForm
       formTitle={formTitle}
-      onSubmit={onAnswerSubmit}
-      buttonText={'Next'}
-      showButton={formContent.type === 'question'}
+      onSubmit={onBookingSubmit}
+      actionButton={actionButton}
     >
       {content}
     </MultiPageForm>

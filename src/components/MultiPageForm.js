@@ -3,7 +3,7 @@ import React from 'react';
 import Form from './Form';
 
 const MultiPageForm = props => {
-  const { formTitle, onSubmit, children, showButton } = props;
+  const { formTitle, onSubmit, children, actionButton } = props;
 
   return (
     <Form onSubmit={onSubmit}>
@@ -15,9 +15,9 @@ const MultiPageForm = props => {
 
       {children}
 
-      {showButton && (
-        <button type="submit" className="btn">
-          Next
+      {actionButton && (
+        <button type="submit" onClick={actionButton.onClick} className="btn">
+          {actionButton.text}
         </button>
       )}
     </Form>

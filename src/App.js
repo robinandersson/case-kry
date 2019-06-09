@@ -66,6 +66,12 @@ function App() {
     }
   };
 
+  const onBookingSubmit = evt => {
+    evt.preventDefault();
+    // Book a meeting
+    console.log('Booking initialized');
+  };
+
   const formContent = currentOutcome
     ? { ...currentOutcome, type: 'outcome' }
     : { ...currentQuestion, type: 'question' };
@@ -77,6 +83,7 @@ function App() {
         formContent={formContent}
         onAnswerChange={onAnswerChange}
         onAnswerSubmit={onAnswerSubmit}
+        onBookingSubmit={onBookingSubmit}
       />
     </main>
   );
