@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
 import Form from './components/Form.js';
+import questionnaire from './assets/data/heartburn.json';
 
 function App() {
-  const [currentQuestion, setCurrentQuestion] = useState({
-    question: {
-      id: 'is_heartburn_known',
-      text: 'Is your heartburn previously known?',
-      answers: [
-        { id: 'is_heartburn_known_yes', label: 'Yes', score: 5 },
-        { id: 'is_heartburn_known_no', label: 'No', score: 0 },
-      ],
-    },
-    previous: null,
-    next: 'heartburn_previous_treatment',
-  });
+  const [currentQuestion, setCurrentQuestion] = useState(
+    questionnaire.questions[0]
+  );
 
   return (
     <main role="main" className="h-full flex flex-col justify-center">
-      <Form formTitle="Heartburn Checker" question={currentQuestion.question} />
+      <Form formTitle="Heartburn Checker" question={currentQuestion} />
     </main>
   );
 }
