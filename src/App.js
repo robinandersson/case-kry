@@ -9,10 +9,13 @@ function App() {
   const [currentAnswer, setCurrentAnswer] = useState();
   const [currentScore, setCurrentScore] = useState(0);
 
-  const onAnswerChange = evt =>
+  const onAnswerChange = evt => {
+    // need to store value to avoid having to persist the SyntheticEvent
+    const newAnswerId = evt.target.value;
     setCurrentAnswer(() =>
-      currentQuestion.answers.find(answer => answer.id === evt.target.value)
+      currentQuestion.answers.find(answer => answer.id === newAnswerId)
     );
+  };
 
   const onAnswerSubmit = evt => {
     evt.preventDefault();
