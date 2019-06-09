@@ -2,7 +2,7 @@ import React from 'react';
 
 const Form = props => {
   const { formTitle } = props;
-  const { id: questionId, text, answers } = props.question;
+  const { id, text, answers } = props.question;
 
   return (
     <form className="flex flex-col justify-between w-full max-w-lg bg-white shadow-lg mx-auto p-10 rounded-xl h-64 min-h-2/3">
@@ -16,7 +16,7 @@ const Form = props => {
           {answers.map(answer => (
             <label key={answer.id} className="flex-1">
               {answer.label}
-              <input type="radio" name={questionId} value={answer.label} />
+              <input type="radio" name={id} value={answer.label} />
             </label>
           ))}
         </div>
