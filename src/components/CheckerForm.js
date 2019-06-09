@@ -9,8 +9,18 @@ const CheckerForm = props => {
   const content = (() => {
     switch (formContent.type) {
       case 'outcome':
-        const { text, showBookingButton } = formContent;
-        return <h1>{text}</h1>;
+        const { text, show_booking_button } = formContent;
+        console.log(show_booking_button);
+
+        return (
+          <fieldset className="flex flex-col py-10">
+            <legend className="text-2xl font-black pb-4">
+              Thank you for answering the questions!
+            </legend>
+            <p>{text}</p>
+            {show_booking_button && <button class="btn">Book a meeting</button>}
+          </fieldset>
+        );
 
       case 'question':
         const { question_text, answers } = formContent;
