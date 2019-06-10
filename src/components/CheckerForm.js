@@ -85,43 +85,15 @@ const CheckerForm = props => {
     }
   })();
 
-  //TODO: refactor to ActionComponent
-  const actionButton = formContent.type === 'question' && (
-    <button
-      type="submit"
-      onClick={handleAnswerSubmit}
-      className="btn"
-      disabled={!currentAnswer}
-    >
-      Next
-    </button>
-  );
-
-  const formHeader = (
-    <div className="pb-4 relative">
-      {historyIsAvailable && (
-        <button
-          type="button"
-          className="absolute top left p-2 -mt-2"
-          onClick={onBackClick}
-        >
-          <img
-            className="h-6"
-            src={process.env.PUBLIC_URL + '/icons/ic-arrow-left-green.svg'}
-            alt="Back-arrow"
-          />
-        </button>
-      )}
-      {formTitle && <h1 className="text-center">{formTitle}</h1>}
-    </div>
-  );
-
   return (
     <MultiPageForm
-      formHeader={formHeader}
+      formTitle={formTitle}
+      showBackButton={historyIsAvailable}
+      onBackClick={onBackClick}
       onSubmit={onBookingSubmit}
-      actionButton={actionButton}
-      formFooter={actionButton}
+      showNextButton={formContent.type === 'question'}
+      nextIsDisabled={!currentAnswer}
+      onNextClick={handleAnswerSubmit}
     >
       {content}
     </MultiPageForm>
