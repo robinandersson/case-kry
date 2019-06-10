@@ -1,15 +1,20 @@
 .btn {
   @apply px-10 py-3 rounded-lg bg-kry-teal-light w-full text-white;
 }
-.btn:hover {
+
+.btn:disabled,
+.btn[disabled] {
+  @apply bg-gray-200 text-gray-600 cursor-not-allowed;
+}
+.btn:not([disabled]):hover {
   @apply bg-kry-teal-lightest;
 }
-.btn:active {
+.btn:not([disabled]):active {
   @apply bg-kry-teal;
 }
-.btn:focus {
+.btn:not([disabled]):focus {
   @apply outline-none shadow-outline;
 }
-.btn:active:focus {
+.btn:not([disabled]):active:focus {
   @apply shadow-none;
 }
