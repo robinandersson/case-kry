@@ -18,3 +18,13 @@
 .btn:not([disabled]):active:focus {
   @apply shadow-none;
 }
+
+.text-button {
+  @apply text-kry-teal-light underline text-xl font-light;
+}
+.text-button:hover {
+  @apply text-kry-teal-lightest;
+}
+.text-button:active {
+  @apply text-kry-teal;
+}

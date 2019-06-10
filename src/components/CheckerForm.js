@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import MultiPageForm from './MultiPageForm';
 
 const CheckerForm = props => {
-  const { formTitle, formContent, onAnswerSubmit, onBookingSubmit } = props;
+  const {
+    formTitle,
+    formContent,
+    onAnswerSubmit,
+    onBookingSubmit,
+    onFormReset,
+  } = props;
   const { id } = formContent;
 
   const [currentAnswer, setCurrentAnswer] = useState();
@@ -14,6 +20,10 @@ const CheckerForm = props => {
     setCurrentAnswer();
     onAnswerSubmit(currentAnswer);
   };
+  const handleReset = evt => {
+    setCurrentAnswer();
+    onFormReset();
+  };
 
   const content = (() => {
     switch (formContent.type) {
@@ -22,17 +32,28 @@ const CheckerForm = props => {
         console.log(show_booking_button);
 
         return (
-          <fieldset className="flex flex-col py-10">
-            <legend className="text-2xl font-black pb-4">
-              Thank you for answering the questions!
-            </legend>
-            <p>{text}</p>
-            {show_booking_button && (
-              <button class="btn" type="submit">
-                Book a meeting
+          <>
+            <fieldset className="flex flex-col py-10">
+              <legend className="text-2xl font-black pb-4">
+                Thank you for answering the questions!
+              </legend>
+              <p>{text}</p>
+              {show_booking_button && (
+                <button class="btn" type="submit">
+                  Book a meeting
+                </button>
+              )}
+            </fieldset>
+            <div className="flex justify-center">
+              <button
+                className="text-button"
+                onClick={handleReset}
+                type="button"
+              >
+                Back to the start screen
               </button>
-            )}
-          </fieldset>
+            </div>
+          </>
         );
 
       case 'question':

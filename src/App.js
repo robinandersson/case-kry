@@ -61,6 +61,12 @@ function App() {
     console.log('Booking initialized');
   };
 
+  const handleFormReset = evt => {
+    setCurrentQuestion(questionnaire.questions[0]);
+    setCurrentOutcome();
+    setCurrentScore();
+  };
+
   const formContent = currentOutcome
     ? { ...currentOutcome, type: 'outcome' }
     : { ...currentQuestion, type: 'question' };
@@ -75,6 +81,7 @@ function App() {
         formContent={formContent}
         onAnswerSubmit={onAnswerSubmit}
         onBookingSubmit={onBookingSubmit}
+        onFormReset={handleFormReset}
       />
     </main>
   );
