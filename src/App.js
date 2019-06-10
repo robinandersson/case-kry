@@ -87,6 +87,7 @@ function App() {
   };
 
   const handleFormReset = evt => {
+    history.current.length = 0;
     setCurrentQuestion(questionnaire.questions[0]);
     setCurrentOutcome();
     setCurrentScore();
