@@ -45,6 +45,7 @@ function App() {
                 outcomeOption => outcomeOption.id === outcome
               )
             );
+            return;
           }
           break;
         default:
