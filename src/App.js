@@ -7,24 +7,13 @@ function App() {
     questionnaire.questions[0]
   );
   const [currentOutcome, setCurrentOutcome] = useState();
-  const [currentAnswer, setCurrentAnswer] = useState();
   const [currentScore, setCurrentScore] = useState(0);
 
-  const onAnswerChange = evt => {
-    // TODO: look into why the SyntheticEvent's properties are nullified
-    // need to store value to avoid having to persist the SyntheticEvent
-    const newAnswerId = evt.target.value;
-    setCurrentAnswer(() =>
-      currentQuestion.answers.find(
-        answerOption => answerOption.id === newAnswerId
-      )
+  const onAnswerSubmit = newAnswerId => {
+    const { id, score } = currentQuestion.answers.find(
+      answerOption => answerOption.id === newAnswerId
     );
-  };
 
-  const onAnswerSubmit = evt => {
-    evt.preventDefault();
-
-    const { id, score } = currentAnswer;
     setCurrentScore(currentScore + score);
 
     // determine the appropriate next action ('next_question', or 'outcome')
@@ -84,7 +73,6 @@ function App() {
       <CheckerForm
         formTitle="Heartburn Checker"
         formContent={formContent}
-        onAnswerChange={onAnswerChange}
         onAnswerSubmit={onAnswerSubmit}
         onBookingSubmit={onBookingSubmit}
       />

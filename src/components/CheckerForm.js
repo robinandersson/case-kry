@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import MultiPageForm from './MultiPageForm';
 
 const CheckerForm = props => {
-  const {
-    formTitle,
-    formContent,
-    onAnswerChange,
-    onAnswerSubmit,
-    onBookingSubmit,
-  } = props;
+  const { formTitle, formContent, onAnswerSubmit, onBookingSubmit } = props;
   const { id } = formContent;
+
+  const [currentAnswer, setCurrentAnswer] = useState();
+
+  const handleAnswerChange = evt => setCurrentAnswer(evt.target.value);
+  const handleAnswerSubmit = evt => {
+    evt.preventDefault();
+    onAnswerSubmit(currentAnswer);
+  };
 
   const content = (() => {
     switch (formContent.type) {
@@ -47,7 +49,7 @@ const CheckerForm = props => {
                     type="radio"
                     name={id}
                     value={answer.id}
-                    onChange={onAnswerChange}
+                    onChange={handleAnswerChange}
                   />
                 </label>
               ))}
@@ -60,7 +62,7 @@ const CheckerForm = props => {
   })();
 
   const actionButton = formContent.type === 'question' && (
-    <button type="submit" onClick={onAnswerSubmit} className="btn">
+    <button type="submit" onClick={handleAnswerSubmit} className="btn">
       Next
     </button>
   );
