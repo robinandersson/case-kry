@@ -113,7 +113,7 @@ function App() {
         onBookingSubmit={onBookingSubmit}
         onFormReset={handleFormReset}
         onBackClick={handleBackClick}
-        historyIsAvailable={history.current.length}
+        historyIsAvailable={!!history.current.length}
       />
     </main>
   );

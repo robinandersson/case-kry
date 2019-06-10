@@ -98,18 +98,19 @@ const CheckerForm = props => {
 
   const formHeader = (
     <div className="pb-4 relative">
-      <button
-        type="button"
-        className="absolute top left p-2 -mt-2"
-        onClick={onBackClick}
-        disabled={!historyIsAvailable}
-      >
-        <img
-          className="h-6"
-          src={process.env.PUBLIC_URL + '/icons/ic-arrow-left-green.svg'}
-          alt="Back-arrow"
-        />
-      </button>
+      {historyIsAvailable && (
+        <button
+          type="button"
+          className="absolute top left p-2 -mt-2"
+          onClick={onBackClick}
+        >
+          <img
+            className="h-6"
+            src={process.env.PUBLIC_URL + '/icons/ic-arrow-left-green.svg'}
+            alt="Back-arrow"
+          />
+        </button>
+      )}
       {formTitle && <h1 className="text-center">{formTitle}</h1>}
     </div>
   );
