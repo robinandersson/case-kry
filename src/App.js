@@ -74,7 +74,7 @@ function App() {
   return (
     <main
       role="main"
-      className="h-auto min-h-full overflow-auto flex flex-col justify-center"
+      className="h-auto min-h-full overflow-auto flex flex-col justify-center p-4"
     >
       <CheckerForm
         formTitle="Heartburn Checker"

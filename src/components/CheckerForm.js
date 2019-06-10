@@ -33,7 +33,7 @@ const CheckerForm = props => {
 
         return (
           <>
-            <fieldset className="flex flex-col py-10">
+            <fieldset className="flex flex-col my-20">
               <legend className="text-2xl font-black pb-4">
                 Thank you for answering the questions!
               </legend>
@@ -59,7 +59,7 @@ const CheckerForm = props => {
       case 'question':
         const { question_text, answers } = formContent;
         return (
-          <fieldset className="flex flex-col py-10">
+          <fieldset className="flex flex-col my-20">
             <legend className="text-2xl font-black pb-4">
               {question_text}
             </legend>
