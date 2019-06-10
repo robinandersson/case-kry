@@ -9,6 +9,7 @@ function App() {
   const [currentOutcome, setCurrentOutcome] = useState();
   const [currentScore, setCurrentScore] = useState(0);
 
+  //TODO: refactor this bad boy ;)
   const onAnswerSubmit = newAnswerId => {
     const { id, score } = currentQuestion.answers.find(
       answerOption => answerOption.id === newAnswerId
