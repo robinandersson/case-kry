@@ -11,6 +11,7 @@ const CheckerForm = props => {
   const handleAnswerChange = evt => setCurrentAnswer(evt.target.value);
   const handleAnswerSubmit = evt => {
     evt.preventDefault();
+    setCurrentAnswer();
     onAnswerSubmit(currentAnswer);
   };
 
