@@ -11,6 +11,8 @@ function App() {
   const [currentOutcome, setCurrentOutcome] = useState();
   const [currentScore, setCurrentScore] = useState(0);
 
+  const history = useRef([]);
+
   const formTitle = useRef('Heartburn Checker');
 
   // TODO: refactor out this as a custom hook
@@ -49,11 +51,12 @@ function App() {
       switch (actionType) {
         case 'next_question':
           if (!answer.hasOwnProperty('answered') || answered === id) {
-            setCurrentQuestion(() =>
-              questionnaire.questions.find(
+            setCurrentQuestion(prevQuestion => {
+              history.current.push(prevQuestion);
+              return questionnaire.questions.find(
                 answerOption => answerOption.id === next_question
-              )
-            );
+              );
+            });
           }
           break;
         case 'outcome':
@@ -89,6 +92,10 @@ function App() {
     setCurrentScore();
   };
 
+  const handleBackClick = evt => {
+    setCurrentQuestion(history.current.pop());
+  };
+
   const formContent = currentOutcome
     ? { ...currentOutcome, type: 'outcome' }
     : { ...currentQuestion, type: 'question' };
@@ -104,6 +111,8 @@ function App() {
         onAnswerSubmit={onAnswerSubmit}
         onBookingSubmit={onBookingSubmit}
         onFormReset={handleFormReset}
+        onBackClick={handleBackClick}
+        historyIsAvailable={history.current.length}
       />
     </main>
   );

@@ -9,6 +9,8 @@ const CheckerForm = props => {
     onAnswerSubmit,
     onBookingSubmit,
     onFormReset,
+    onBackClick,
+    historyIsAvailable,
   } = props;
   const { id } = formContent;
 
@@ -94,9 +96,27 @@ const CheckerForm = props => {
     </button>
   );
 
+  const formHeader = (
+    <div className="pb-4 relative">
+      <button
+        type="button"
+        className="absolute top left p-2 -mt-2"
+        onClick={onBackClick}
+        disabled={!historyIsAvailable}
+      >
+        <img
+          className="h-6"
+          src={process.env.PUBLIC_URL + '/icons/ic-arrow-left-green.svg'}
+          alt="Back-arrow"
+        />
+      </button>
+      {formTitle && <h1 className="text-center">{formTitle}</h1>}
+    </div>
+  );
+
   return (
     <MultiPageForm
-      formTitle={formTitle}
+      formHeader={formHeader}
       onSubmit={onBookingSubmit}
       actionButton={actionButton}
       formFooter={actionButton}
