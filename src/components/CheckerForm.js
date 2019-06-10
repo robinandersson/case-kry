@@ -79,6 +79,7 @@ const CheckerForm = props => {
           </fieldset>
         );
       default:
+        // TODO: style this error message
         return <h1>'Something went wrong :/'</h1>;
     }
   })();
