@@ -85,6 +85,7 @@ const CheckerForm = props => {
     }
   })();
 
+  //TODO: refactor to ActionComponent
   const actionButton = formContent.type === 'question' && (
     <button
       type="submit"

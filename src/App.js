@@ -64,7 +64,7 @@ function App() {
             !answer.hasOwnProperty('max_score') ||
             currentScore <= max_score
           ) {
-            setCurrentOutcome(() =>
+            setCurrentOutcome(
               questionnaire.outcomes.find(
                 outcomeOption => outcomeOption.id === outcome
               )
