@@ -59,16 +59,18 @@ const CheckerForm = props => {
     }
   })();
 
-  const actionButton = formContent.type === 'question' && {
-    text: 'Next',
-    onClick: onAnswerSubmit,
-  };
+  const actionButton = formContent.type === 'question' && (
+    <button type="submit" onClick={onAnswerSubmit} className="btn">
+      Next
+    </button>
+  );
 
   return (
     <MultiPageForm
       formTitle={formTitle}
       onSubmit={onBookingSubmit}
       actionButton={actionButton}
+      formFooter={actionButton}
     >
       {content}
     </MultiPageForm>

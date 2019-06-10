@@ -3,7 +3,7 @@ import React from 'react';
 import Form from './Form';
 
 const MultiPageForm = props => {
-  const { formTitle, onSubmit, children, actionButton } = props;
+  const { formTitle, onSubmit, children, formFooter } = props;
 
   return (
     <Form onSubmit={onSubmit}>
@@ -12,14 +12,8 @@ const MultiPageForm = props => {
           <h1 className="text-center">{formTitle}</h1>
         </div>
       )}
-
       {children}
-
-      {actionButton && (
-        <button type="submit" onClick={actionButton.onClick} className="btn">
-          {actionButton.text}
-        </button>
-      )}
+      {formFooter}
     </Form>
   );
 };
