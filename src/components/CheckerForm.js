@@ -38,7 +38,7 @@ const CheckerForm = props => {
               </legend>
               <p>{text}</p>
               {show_booking_button && (
-                <button class="btn" type="submit">
+                <button className="btn" type="submit">
                   Book a meeting
                 </button>
               )}
