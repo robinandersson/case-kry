@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import CheckerForm from './components/CheckerForm';
 import questionnaire from './assets/data/heartburn.json';
+
+import { jsonIdToReadableString } from './utils/strings';
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(
@@ -8,6 +10,24 @@ function App() {
   );
   const [currentOutcome, setCurrentOutcome] = useState();
   const [currentScore, setCurrentScore] = useState(0);
+
+  const formTitle = useRef('Heartburn Checker');
+
+  // TODO: refactor out this as a custom hook
+  useEffect(() => {
+    const subTitle = (() => {
+      if (currentOutcome) {
+        return jsonIdToReadableString(currentOutcome.id);
+      }
+      if (currentQuestion) {
+        return `${currentQuestion.question_text}`;
+      }
+    })();
+
+    document.title = subTitle
+      ? `${formTitle.current} – ${subTitle}`
+      : formTitle.current;
+  }, [currentQuestion, currentOutcome]);
 
   //TODO: refactor this bad boy ;)
   const onAnswerSubmit = newAnswerId => {
@@ -79,7 +99,7 @@ function App() {
       className="h-auto min-h-full overflow-auto flex flex-col justify-center p-4"
     >
       <CheckerForm
-        formTitle="Heartburn Checker"
+        formTitle={formTitle.current}
         formContent={formContent}
         onAnswerSubmit={onAnswerSubmit}
         onBookingSubmit={onBookingSubmit}
