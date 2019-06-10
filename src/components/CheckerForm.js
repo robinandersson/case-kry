@@ -63,7 +63,12 @@ const CheckerForm = props => {
   })();
 
   const actionButton = formContent.type === 'question' && (
-    <button type="submit" onClick={handleAnswerSubmit} className="btn">
+    <button
+      type="submit"
+      onClick={handleAnswerSubmit}
+      className="btn"
+      disabled={!currentAnswer}
+    >
       Next
     </button>
   );
