@@ -29,7 +29,6 @@ const CheckerForm = props => {
     switch (formContent.type) {
       case 'outcome':
         const { text, show_booking_button } = formContent;
-        console.log(show_booking_button);
 
         return (
           <>
