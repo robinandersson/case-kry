@@ -2,6 +2,7 @@ import React from 'react';
 
 import Form from './Form';
 
+//TODO: refactor all form buttons to general Button/FormButton component(s)
 const MultiPageForm = props => {
   const {
     formTitle,
@@ -32,8 +33,9 @@ const MultiPageForm = props => {
         )}
         {formTitle && <h1 className="text-center">{formTitle}</h1>}
       </div>
+
       {children}
-      {/* //TODO: refactor to ActionComponent */}
+
       {showNextButton && (
         <button
           type="button"

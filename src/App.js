@@ -12,10 +12,10 @@ function App() {
 
   const currentScore = useRef(0);
   const history = useRef([]);
-
   const formTitle = useRef('Heartburn Checker');
 
   // TODO: refactor out this as a custom hook
+  // set document title when question/outcome changes
   useEffect(() => {
     const subTitle = (() => {
       if (currentOutcome) {
@@ -33,9 +33,9 @@ function App() {
   }, [currentQuestion, currentOutcome]);
 
   //TODO: refactor this bad boy ;)
-  const onAnswerSubmit = newAnswerId => {
+  const onAnswerSubmit = answerId => {
     const { id, score } = currentQuestion.answers.find(
-      answerOption => answerOption.id === newAnswerId
+      answerOption => answerOption.id === answerId
     );
 
     currentScore.current += score;
@@ -60,6 +60,7 @@ function App() {
             });
           }
           break;
+
         case 'outcome':
           if (
             !answer.hasOwnProperty('max_score') ||
@@ -73,6 +74,7 @@ function App() {
             return;
           }
           break;
+
         default:
           // Should never happen
           // TODO: some nifty error handling goes here

@@ -1,5 +1,7 @@
 import React from 'react';
 
+//TODO: REMOVE! This component has become totally unneccessary xD
+// break out css classes and use those instead
 const Form = props => {
   const { onSubmit, children } = props;
 

@@ -12,26 +12,28 @@ const CheckerForm = props => {
     onBackClick,
     historyIsAvailable,
   } = props;
-  const { id } = formContent;
 
   const [currentAnswer, setCurrentAnswer] = useState();
 
   const handleAnswerChange = evt => setCurrentAnswer(evt.target.value);
+
   const handleAnswerSubmit = evt => {
     evt.preventDefault();
     setCurrentAnswer();
     onAnswerSubmit(currentAnswer);
   };
+
   const handleReset = evt => {
     setCurrentAnswer();
     onFormReset();
   };
 
+  // determine what to show in the form 'body'
+  // TODO: break out to components from the elements below
   const content = (() => {
     switch (formContent.type) {
       case 'outcome':
         const { text, show_booking_button } = formContent;
-
         return (
           <>
             <fieldset className="flex flex-col my-20">
@@ -58,7 +60,7 @@ const CheckerForm = props => {
         );
 
       case 'question':
-        const { question_text, answers } = formContent;
+        const { id, question_text, answers } = formContent;
         return (
           <fieldset className="flex flex-col my-20">
             <legend className="text-2xl font-black pb-4">
@@ -80,7 +82,8 @@ const CheckerForm = props => {
           </fieldset>
         );
       default:
-        // TODO: style this error message
+        // default should never occur
+        // TODO: style and properly layout this error message, just in case
         return <h1>'Something went wrong :/'</h1>;
     }
   })();
