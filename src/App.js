@@ -99,6 +99,7 @@ function App() {
 
   const handleBackClick = evt => {
     setCurrentQuestion(history.current.pop());
+    currentOutcome && setCurrentOutcome();
   };
 
   const formContent = currentOutcome
