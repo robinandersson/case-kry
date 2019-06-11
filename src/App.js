@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import CheckerForm from './components/CheckerForm';
 import questionnaire from './assets/data/heartburn.json';
 
-import { jsonIdToReadableString } from './utils/strings';
+import { firstLetterToUpperCase, snakeCaseToSentence } from './utils/strings';
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(
@@ -19,7 +19,8 @@ function App() {
   useEffect(() => {
     const subTitle = (() => {
       if (currentOutcome) {
-        return jsonIdToReadableString(currentOutcome.id);
+        const sentence = snakeCaseToSentence(currentOutcome.id);
+        return firstLetterToUpperCase(sentence);
       }
       if (currentQuestion) {
         return `${currentQuestion.question_text}`;

@@ -1,9 +1,6 @@
-const uppercaseFirstLetter = str =>
+const firstLetterToUpperCase = str =>
   `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
 
-const jsonIdToReadableString = id =>
-  uppercaseFirstLetter(id)
-    .split('_')
-    .join(' ');
+const snakeCaseToSentence = str => str.split('_').join(' ');
 
-export { uppercaseFirstLetter, jsonIdToReadableString };
+export { firstLetterToUpperCase, snakeCaseToSentence };
