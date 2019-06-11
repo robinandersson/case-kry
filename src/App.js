@@ -58,6 +58,7 @@ function App() {
                 answerOption => answerOption.id === next_question
               );
             });
+            return;
           }
           break;
 
