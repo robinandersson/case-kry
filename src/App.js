@@ -9,8 +9,8 @@ function App() {
     questionnaire.questions[0]
   );
   const [currentOutcome, setCurrentOutcome] = useState();
-  const [currentScore, setCurrentScore] = useState(0);
 
+  const currentScore = useRef(0);
   const history = useRef([]);
 
   const formTitle = useRef('Heartburn Checker');
@@ -37,7 +37,7 @@ function App() {
       answerOption => answerOption.id === newAnswerId
     );
 
-    setCurrentScore(currentScore + score);
+    currentScore.current += score;
 
     // determine the appropriate next action ('next_question', or 'outcome')
     // and set state accordingly
@@ -62,7 +62,7 @@ function App() {
         case 'outcome':
           if (
             !answer.hasOwnProperty('max_score') ||
-            currentScore <= max_score
+            currentScore.current <= max_score
           ) {
             setCurrentOutcome(
               questionnaire.outcomes.find(
@@ -88,9 +88,9 @@ function App() {
 
   const handleFormReset = evt => {
     history.current.length = 0;
+    currentScore.current = 0;
     setCurrentQuestion(questionnaire.questions[0]);
     setCurrentOutcome();
-    setCurrentScore();
   };
 
   const handleBackClick = evt => {
